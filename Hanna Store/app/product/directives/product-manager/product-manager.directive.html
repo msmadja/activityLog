@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  
+    <h1>Hanna Store</h1>
+
+
+<div >
+
+<form class="form-inline">
+  <div class="form-group">
+    <label class="sr-only" for="name">Name</label>
+    <input type="name" class="form-control" id="name" ng-model="vm.productName" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="price">Price</label>
+    <input type="price" class="form-control" id="price" ng-model="vm.productPrice" placeholder="Price">
+  </div>
+  <button ng-click="vm.addProduct(vm.productName,vm.productPrice)" class="btn btn-default">Insert</button>
+</form>
+
+</div>
+
+
+<div> 
+   <a  data-ng-repeat="product in vm.model.products track by product._id" ng-if="!product.is_removed" class = "list-group-item">
+      <h4 class = "list-group-item-heading">
+        <span ng-click="vm.removeProduct(product)" class="glyphicon glyphicon-trash"></span>
+        <span>{{product.name}}</span>
+        <span>{{product.price}}$</span>
+      </h4>
+      <p class="list-group-item-text">
+         You will get 50% precents on the second product.
+      </p>
+   </a>
+</div>
+
+</div>
+
+
+</div>
