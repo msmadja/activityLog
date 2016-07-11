@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    describe('messagePanel', function () {
+    describe('list', function () {
 
         var scope, compile;
 

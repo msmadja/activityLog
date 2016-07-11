@@ -20,7 +20,7 @@
 </div>
 
 
-<div> 
+<div  class="products-list"> 
    <a  data-ng-repeat="product in vm.model.products track by product._id" ng-if="!product.is_removed" class = "list-group-item">
       <h4 class = "list-group-item-heading">
         <span ng-click="vm.removeProduct(product)" class="glyphicon glyphicon-trash"></span>
@@ -35,5 +35,5 @@
 
 </div>
 
-
-</div>
+<h1>Smart List</h1>
+<list on-selected="vm.onSelected" list="vm.model.products" type="'first-list'"></list>

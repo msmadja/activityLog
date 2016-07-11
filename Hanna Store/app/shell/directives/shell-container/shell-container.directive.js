@@ -24,11 +24,22 @@
 
             },
             templateUrl: 'shell/directives/shell-container/shell-container.directive.html',
+            controller:ShellContainerController,
+            controllerAs:'vm',
+            bindToController:true,
             link: _link
         };
 
         return directive;
 
+    }
+
+
+    function ShellContainerController (localDataService){
+        
+        var vm = this;
+
+        vm.service = localDataService;
     }
 
     /* ANGULAR */

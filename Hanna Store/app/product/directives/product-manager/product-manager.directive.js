@@ -23,14 +23,12 @@
 
     }
 
-     function ProductManagerController(productService) {
+     function ProductManagerController(productService , $log) {
             
+
+
             var vm = this;
-            vm.model = productService.model;
-            vm.addProduct = _addProduct;
-            vm.removeProduct = _removeProduct;
-            vm.productName = '';
-            vm.productPrice = '';
+
 
             function _addProduct(name , price) {
                 productService.addProduct(name , price);
@@ -41,6 +39,25 @@
             function _removeProduct(product) {
                 productService.removeProduct(product);
             }
+
+
+            function _init() {
+                productService.loadAllProducts();
+            }
+
+            function _onSelected(item) {
+                $log.info("My item is: "+item);
+            }
+
+
+            _init();
+
+            vm.model = productService.model;
+            vm.addProduct = _addProduct;
+            vm.removeProduct = _removeProduct;
+            vm.onSelected = _onSelected;
+            vm.productName = '';
+            vm.productPrice = '';
 
       }
 

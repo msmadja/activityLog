@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="HaganatSviva">
 
@@ -53,6 +54,10 @@
     <!-- for date utilities-->
     <script src="../bower_components/moment/moment.js"></script>
 
+    <!-- for pouchdb -->
+    <script src="../bower_components/pouchdb/dist/pouchdb.min.js"></script>
+    <script src="../bower_components/pouchdb-upsert/dist/pouchdb.upsert.js"></script>
+
     <!-- Add New Bower Component JS Above -->
     <!-- Main App JS -->
     <script src="app.js"></script>
@@ -62,8 +67,9 @@
     <script src="common/services/common-service.js"></script>
     <script src="common/services/data/data-service.js"></script>
     <script src="common/services/code-generator.service.js"></script>
+    <script src="common/services/local-data-service.service.js"></script>
     <script src="common/services/message/message-service.js"></script>
-    <script src="common/directives/message-panel/message-panel.directive.js"></script>
+    <script src="common/directives/list/list.directive.js"></script>
 
 
     <script src="shell/shell.module.js"></script>

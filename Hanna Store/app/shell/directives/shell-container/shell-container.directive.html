@@ -1,6 +1,7 @@
 
 <div class="container">
-        <div id="content" ui-view="shellContentView">
+        <div ng-if="vm.service.model.loading" ><b>loading.....</b></div>
+        <div ng-if="!vm.service.model.loading && vm.service.model.initialized" id="content" ui-view="shellContentView">
           <!-- Module Content goes here -->
         </div>
 </div>
