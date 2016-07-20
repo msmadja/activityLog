@@ -28,9 +28,17 @@
             return low;
         }
 
+        function search(arr , docId) {
+            for(var index = 0 ; index < arr.length ; index ++){
+                if(arr[index]._id === docId) {
+                    return index;
+                }
+            }
+        }
+
         function onDeleted(id) {
             $log.debug("localDataService onDeleted()", id);
-            var index = binarySearch(_model.docs, id);
+            var index = search(_model.docs, id);
             var doc = _model.docs[index];
             if (doc && doc._id === id) {
                 _model.docs.splice(index, 1);
@@ -40,7 +48,7 @@
 
         function onUpdatedOrInserted(newDoc) {
             $log.debug("localDataService onUpdatedOrInserted()", newDoc);
-            var index = binarySearch(_model.docs, newDoc._id);
+            var index = search(_model.docs, newDoc._id);
             var doc = _model.docs[index];
             if (doc && doc._id === newDoc._id) {
                 // update
@@ -48,7 +56,7 @@
                 PubSub.publish('onUpdated', newDoc._id);
             } else {
                 // insert
-                _model.docs.splice(index, 0, newDoc);
+                _model.docs.push(newDoc);
                 PubSub.publish('onInserted', newDoc._id);
             }
 
@@ -72,12 +80,6 @@
         }
 
         
-        function _findTimeSheetById(id) {
-            var timesheet = _.find(_model.docs, function (doc) {
-                return doc["id"] === id;
-            });
-            return timesheet;
-        }
 
 
         function _save(id, doc) {
@@ -131,9 +133,6 @@
         }
 
 
-        // init
-        // _init();
-
         function onLoadDocs() {
             $log.debug("localDataService onLoadDocs()");
             return _db.allDocs({ include_docs: true }).then(function (res) {
@@ -152,7 +151,6 @@
                 });
                 return versions.Versions;
             },
-            findTimeSheetById: _findTimeSheetById,
             save: _save,
             getDocumentsByType: _getDocumentsByType
         };
