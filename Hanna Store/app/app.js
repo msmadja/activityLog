@@ -25,7 +25,7 @@
                 controller: [
                     '$state',
                     function ($state) {
-                        $state.go('shell.products');
+                        $state.go('shell.products.all');
                     }
                 ]
             });

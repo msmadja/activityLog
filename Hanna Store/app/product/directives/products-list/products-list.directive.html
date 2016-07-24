@@ -1,0 +1,3 @@
+<div>
+    <p data-ng-repeat="item in vm.products | filter:{parent:vm.params.key}" ng-click="vm.onClick(item.key)" >{{item.name}}</p>
+</div>

@@ -12,7 +12,23 @@
                 url: '/products',
                 views: {
                     'shellContentView@shell': {
-                        template:'<product-manager></product-manager>'
+                        template:'<product-container></product-container>'
+                     }
+                }
+            })
+            .state('shell.products.all', {
+                url: '/all',
+                views: {
+                    'productsContainer@shell.products': {
+                        template:'<products-list products="vm.products"  on-selected="vm.setKey"></products-list>'
+                     }
+                }
+            })
+            .state('shell.products.sub', {
+                url: '/sub/{key}',
+                views: {
+                    'productsContainer@shell.products': {
+                        template:'<products-list products="vm.subProducts" key-for-search="vm.key"></products-list>'
                      }
                 }
             });
